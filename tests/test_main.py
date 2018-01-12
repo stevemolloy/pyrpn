@@ -52,3 +52,11 @@ class TestRpn(unittest.TestCase):
         self.assertAlmostEqual(Rpn('4.0 sqrt').solve(), math.sqrt(4.0), places=NPRC)
         self.assertAlmostEqual(Rpn('2.0 sqrt').solve(), math.sqrt(2.0), places=NPRC)
         self.assertIsNone(Rpn('-1.0 sqrt').solve())
+
+    def test_udf(self):
+        a = Rpn('''
+            udf
+            increment
+            1 + 
+            
+            ''')

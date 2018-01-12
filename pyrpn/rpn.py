@@ -37,7 +37,10 @@ class Rpn(object):
         opfun = [self.fadd, self.fsub, self.fmul, self.fdiv,
                  self.fsin, self.fcos, self.ftan, self.fsqrt]
 
-        istr = istr.lower().replace('pi',str(math.pi))
+        istr = istr.lower().replace('pi', str(math.pi))
+
+        while istr.find('udf') != -1:
+            raise NotImplementedError
 
         self.opslist = istr.split(delimiter)
         self.opslist.reverse()
