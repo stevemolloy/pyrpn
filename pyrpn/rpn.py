@@ -33,12 +33,15 @@ class Rpn(object):
     >>> result = Rpn.solve_rpn(rpnstr)
     """
     def __init__(self, istr, delimiter=None):
-        self.opslist = istr.lower().replace('pi',str(math.pi)).split(delimiter)
-        self.opslist.reverse()
-
         oprts = ['+', '-', '*', '/', 'sin', 'cos', 'tan', 'sqrt']
         opfun = [self.fadd, self.fsub, self.fmul, self.fdiv,
                  self.fsin, self.fcos, self.ftan, self.fsqrt]
+
+        istr = istr.lower().replace('pi',str(math.pi))
+
+        self.opslist = istr.split(delimiter)
+        self.opslist.reverse()
+
         self.opdic = dict(zip(oprts, opfun))
 
     def fadd(self):
